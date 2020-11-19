@@ -1,0 +1,8 @@
+{
+  "env": "dev",
+  "url": "http://localhost:4200",
+  "host": "localhost",
+  "user": "root",
+  "password": "root",
+  "database": "enquire"
+}
