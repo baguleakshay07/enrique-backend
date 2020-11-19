@@ -12,6 +12,20 @@ const cookieParser = require('cookie-parser')
 const authRouter = require('./routes/authRouter')
 const AppError = require('./AppError')
 const app = express()
+
+app.all('/*', function (req, res, next) {
+    // CORS headers
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Origin', req.headers.origin)
+        res.header('Access-Control-Allow-Headers',
+            'Content-Type,X-Access-Token,Cache-Control, pcode')
+        return res.status(httpStatus.OK).end()
+    } else {
+        res.header('Access-Control-Allow-Origin', req.headers.origin)
+        next()
+    }
+})
+
 app.enable('trust proxy')
 
 app.set('view engine', 'pug')
